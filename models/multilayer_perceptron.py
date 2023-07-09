@@ -76,8 +76,6 @@ data = scaler_model.transform(data)
 train_data, test_data = data.randomSplit([0.8, 0.2], seed=42)
 
 # Entrenar el modelo
-#rf = RandomForestClassifier(labelCol=target_column, featuresCol='features', numTrees=100, seed=42)
-#rf = DecisionTreeClassifier(labelCol=target_column, featuresCol='features', seed=42)
 layers = [len(feature_columns), 10, 5, data.select(target_column).distinct().count()]
 mlp = MultilayerPerceptronClassifier(labelCol=target_column, featuresCol='features', layers=layers, seed=42)
 
