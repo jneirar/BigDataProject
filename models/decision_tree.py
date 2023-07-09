@@ -1,8 +1,6 @@
 # Librerías utilizadas
-from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import VectorAssembler, MinMaxScaler
-from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.mllib.evaluation import MulticlassMetrics
 from pyspark.sql.functions import col
@@ -10,7 +8,7 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 from pyspark.ml.classification import DecisionTreeClassifier
-# Crear SparkContext y SparkSession
+
 tiempo_programa = time.time()
 
 spark = SparkSession.builder \
@@ -22,7 +20,7 @@ spark = SparkSession.builder \
     .config("spark.driver.memory", "512m") \
     .getOrCreate()
 
-path_base = "hdfs://node-master:9000/user/azureuser/dataModel60/"
+path_base = "hdfs://node-master:9000/user/azureuser/dataModel/"
 folder_paths = [path_base + "Education",
                 path_base + "Finance",
                 path_base + "Games",
@@ -101,7 +99,6 @@ confusion_matrix = metrics.confusionMatrix()
 
 tiempo_programa_final = time.time() - tiempo_programa
 
-
 print("-----------Resultados para el modelo decision-tree con 60% de datos----------- ")
 
 print("Accuracy:", accuracy)
@@ -141,4 +138,3 @@ plt.savefig('confusion_matrix_decision_tree_100%_.png',dpi=300)
 
 # Cerrar SparkContext y SparkSession
 spark.stop()
-

@@ -1,5 +1,4 @@
 # Librerías utilizadas
-from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import VectorAssembler, MinMaxScaler
 from pyspark.ml.classification import RandomForestClassifier
@@ -9,7 +8,7 @@ from pyspark.sql.functions import col
 import time
 import numpy as np
 import matplotlib.pyplot as plt
-# Crear SparkContext y SparkSession
+
 tiempo_programa = time.time()
 
 spark = SparkSession.builder \
@@ -21,7 +20,7 @@ spark = SparkSession.builder \
     .config("spark.driver.memory", "512m") \
     .getOrCreate()
 
-path_base = "hdfs://node-master:9000/user/azureuser/dataModel40/"
+path_base = "hdfs://node-master:9000/user/azureuser/dataModel/"
 folder_paths = [path_base + "Education",
                 path_base + "Finance",
                 path_base + "Games",
@@ -138,7 +137,5 @@ plt.setp(ax.get_xticklabels(), rotation = 45, ha= "right", rotation_mode = "anch
 im.set_clim(vmin=0, vmax=confusion_matrix_np.max() * 0.8)
 plt.savefig('confusion_matrix_random_tree_100%_.png',dpi=300)
 
-
 # Cerrar SparkContext y SparkSession
 spark.stop()
-
