@@ -109,3 +109,11 @@ El entrenamiento es similar al de Random Forest, pero con el script [decision_tr
 ### Multilayer Perceptron
 
 El entrenamiento es similar al de Random Forest, pero con el script [multilayer_perceptron.py](models/multilayer_perceptron.py).
+
+## Referencias
+
+- [Base de datos](https://www.kaggle.com/datasets/camellia2013/zte-tad-dataset)
+- [Configuración Hadoop y Yarn](https://www.linode.com/docs/guides/how-to-install-and-set-up-hadoop-cluster/)
+- [Configuración Spark](https://www.linode.com/docs/guides/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/)
+- [SparkML](https://spark.apache.org/docs/latest/ml-guide.html)
+
